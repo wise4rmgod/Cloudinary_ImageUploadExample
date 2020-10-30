@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         config.put("cloud_name", "myCloudName")
-        config.put("api_key", "636353683782376")
-        config.put("api_secret", "zF5lqkUauOYaMXQ1eJPhp-keutM")
+        config.put("api_key", "")
+        config.put("api_secret", "-keutM")
         MediaManager.init(this, config);
 
         save.setOnClickListener {
@@ -45,19 +45,20 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onProgress(requestId: String?, bytes: Long, totalBytes: Long) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onReschedule(requestId: String?, error: ErrorInfo?) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onError(requestId: String?, error: ErrorInfo?) {
-                Toast.makeText(applicationContext, "Task Not successful", Toast.LENGTH_SHORT).show()
+                error
+                Toast.makeText(applicationContext, "Task Not successful"+ error, Toast.LENGTH_SHORT).show()
             }
 
             override fun onStart(requestId: String?) {
-                save.text = "start"
+
                 Toast.makeText(applicationContext, "Start", Toast.LENGTH_SHORT).show()
             }
         }).dispatch()
